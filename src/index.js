@@ -11,6 +11,8 @@ import { ApolloClient } from 'apollo-boost';
 
 import { store, persistor } from './redux/store';
 
+import { resolvers, typeDefs } from './graphql/resolvers';
+
 import './index.css';
 import App from './App';
 
@@ -18,7 +20,15 @@ const httpLink = createHttpLink({ uri: 'https://crwn-clothing.com' });
 const cache = new InMemoryCache();
 const client = new ApolloClient({
   cache,
+  typeDefs,
+  resolvers,
   link: httpLink
+});
+
+client.writeData({
+  data: {
+    cartHidden: true
+  }
 });
 
 ReactDOM.render(
