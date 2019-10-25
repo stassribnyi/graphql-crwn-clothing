@@ -19,7 +19,7 @@ export const resolvers = {
         query: GET_CART_HIDDEN
       });
 
-      _context.cache.writeValue({
+      _context.cache.writeQuery({
         query: GET_CART_HIDDEN,
         data: {
           cartHidden: !cartHidden
